@@ -1,12 +1,18 @@
-import { Handler } from '@netlify/functions'
+import express, {json, urlencoded} from 'express'
+import serverless from 'serverless-http'
+import {AppRoutes} from "./src/app.routes";
 
-export const handler: Handler = async (event, context) => {
-  const { name = 'stranger' } = event.queryStringParameters
+function createServer() {
+  const app = express()
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: `Hello, ${name}!`,
-    }),
-  }
+  const router = express.Router()
+
+  AppRoutes.create(router)
+
+  app.use(json())
+  app.use(urlencoded({extended: true}))
+  app.use('/api/normal-test', router)
+  return app
 }
+
+module.exports.handler = serverless(createServer(), {provider: 'aws'})
