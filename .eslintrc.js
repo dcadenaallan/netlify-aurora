@@ -14,7 +14,15 @@ module.exports = {
   rules: {},
   overrides: [
     {
+      files: ['components/*.{js,ts,vue}'],
+      parser: 'vue-eslint-parser',
+      rules: {
+        'vue/multi-word-component-names': 'error',
+      },
+    },
+    {
       files: [
+        'src/**/*.ts',
         'functions/**/*.ts',
       ],
       parser: '@typescript-eslint/parser',
