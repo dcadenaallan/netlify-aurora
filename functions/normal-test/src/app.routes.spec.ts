@@ -1,13 +1,13 @@
 import {PrismaClient} from "@prisma/client";
 
 describe('AppRoutes', () => {
-  let prisma
+  let prisma: PrismaClient
 
   beforeEach(async () => {
     prisma = new PrismaClient()
-    await prisma.$executeRaw`insert into User (id, createdAt, email, name)
-                             values (1, '2022-06-28 15:24:10.491', 'test1@test.com', 'Test One'),
-                                    (2, '2022-06-28 15:47:33.851', 'test2@test.com', 'Test Two');`
+    await prisma.user.createMany({
+      data: [{name: 'Test 1', email: 'test1@test.com'}, {name: 'Test 2', email: 'test2@test.com'}]
+    })
   })
   it('Test1', async () => {
     const users = await prisma.user.findMany()
