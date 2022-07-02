@@ -21,9 +21,11 @@ jobs:
       image: postgres:14
       env:
         NODE_ENV: development
-        POSTGRES_PASSWORD: POSTGRES
+        POSTGRES_USER=postgres
+        POSTGRES_PASSWORD=POSTGRES
+        POSTGRES_DB=test_benchmarkpro
       ports:
-        - 5432:5432
+        - 5432
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -44,12 +46,12 @@ jobs:
 
       - name: Run Migrations
         env: # Or as an environment variable
-          DATABASE_URL: 'postgresql://postgres:POSTGRES@localhost:5432/postgres?sslmode=verify-full&schema=public&connection_limit=5'
+          DATABASE_URL: 'postgresql://postgres:POSTGRES@localhost:5432/test_benchmarkpro?sslmode=verify-full&schema=public&connection_limit=5'
           ENVIRONMENT: 'test'
         run: npx prisma migrate deploy
 
       - name: Run Unit Test
         env: # Or as an environment variable
-          DATABASE_URL: 'postgresql://postgres:POSTGRES@localhost:5432/postgres?sslmode=verify-full&schema=public&connection_limit=5'
+          DATABASE_URL: 'postgresql://postgres:POSTGRES@localhost:5432/test_benchmarkpro?sslmode=verify-full&schema=public&connection_limit=5'
           ENVIRONMENT: 'test'
         run: npm run test
