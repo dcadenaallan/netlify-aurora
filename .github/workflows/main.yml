@@ -46,7 +46,7 @@ jobs:
         env: # Or as an environment variable
           DATABASE_URL: 'postgresql://postgres:POSTGRES@localhost:5432/postgres?sslmode=verify-full&schema=public&connection_limit=5'
           ENVIRONMENT: 'test'
-        run: npx prisma migrate apply
+        run: npx prisma migrate deploy
 
       - name: Run Unit Test
         env: # Or as an environment variable
