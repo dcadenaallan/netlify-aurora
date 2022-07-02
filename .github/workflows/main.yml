@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI Test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ${{matrix.os}}
+    container:
+      image: postgres:14
+      env:
+        NODE_ENV: development
+        POSTGRES_PASSWORD: POSTGRES
+      ports:
+        - 5432:5432
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [ 14.x ]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a set of commands using the runners shell
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node-version}}
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Run Migrations
+        env: # Or as an environment variable
+          DATABASE_URL: 'postgresql://postgres:POSTGRES@localhost:5432/postgres?sslmode=verify-full&schema=public&connection_limit=5'
+          ENVIRONMENT: 'test'
+        run: npx prisma migrate apply
+
+      - name: Run Unit Test
+        env: # Or as an environment variable
+          DATABASE_URL: 'postgresql://postgres:POSTGRES@localhost:5432/postgres?sslmode=verify-full&schema=public&connection_limit=5'
+          ENVIRONMENT: 'test'
+        run: npm run test
