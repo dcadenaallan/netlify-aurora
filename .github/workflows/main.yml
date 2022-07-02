@@ -12,8 +12,8 @@ on:
   workflow_dispatch:
 
 env:
-  DB: POSTGRES
-  DATABASE_URL: 'postgresql://postgres:$env.DB@localhost:5432/test_benchmarkpro?sslmode=verify-full&schema=public&connection_limit=5'
+  PASSWORD: POSTGRES
+  DATABASE_URL: 'postgresql://postgres:$PASSWORD@localhost:5432/test_benchmarkpro?sslmode=verify-full&schema=public&connection_limit=5'
   ENVIRONMENT: 'test'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -28,7 +28,7 @@ jobs:
         env:
           NODE_ENV: development
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: ${{ env.DB }}
+          POSTGRES_PASSWORD: ${{ env.PASSWORD }}
           POSTGRES_DB: test_benchmarkpro
         ports:
           - 5432:5432
