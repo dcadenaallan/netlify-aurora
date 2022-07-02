@@ -21,9 +21,9 @@ jobs:
       image: postgres:14
       env:
         NODE_ENV: development
-        POSTGRES_USER=postgres
-        POSTGRES_PASSWORD=POSTGRES
-        POSTGRES_DB=test_benchmarkpro
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: POSTGRES
+        POSTGRES_DB: test_benchmarkpro
       ports:
         - 5432
     strategy:
