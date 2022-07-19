@@ -5,6 +5,9 @@ export default defineConfig({
   taskTimeout: 15000,
   viewportWidth: 1440,
   viewportHeight: 900,
+  env: {
+    DEPLOY_PRIME_URL: 'http://localhost:8888',
+  },
   e2e: {
     baseUrl: 'http://localhost:8888',
     setupNodeEvents(on, config) {
