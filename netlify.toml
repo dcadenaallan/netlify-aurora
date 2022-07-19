@@ -21,7 +21,7 @@ package = "netlify-plugin-cypress"
 #    enable = true
     spa = true
 #    configFile = "cypress.netlify.json"
-    start = 'DATABASE_URL=CYPRESS_DATABASE_URL npx prisma generate && printenv DATABASE_URL && npx netlify dev'
+    start = 'npx prisma generate && npx netlify dev'
     wait-on = 'http://localhost:8888'
     [plugins.inputs.postBuild]
     enable = false

@@ -85,9 +85,10 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           DATABASE_URL: "postgresql://postgres:UhhOpIwbARXKRlmqb88t@netlifytest.cjcxflnltzn2.us-east-1.rds.amazonaws.com:5432/netlifytest?sslmode=verify-full&schema=public&connection_limit=5"
           DEPLOY_PRIME_URL: "http://localhost:8888"
+          DEBUG: "netlify-plugin-cypress,netlify-plugin-cypress:verbose"
         uses: cypress-io/github-action@v2
         with:
-          spa: true
+          tag: "Github Actions"
           record: true
           wait-on: 'http://localhost:8888'
-          start: npx prisma generate && npx netlify dev
+          start: npx prisma generate, npx netlify dev
