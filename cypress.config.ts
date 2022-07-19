@@ -18,7 +18,7 @@ export default defineConfig({
           const propName = cypressEnvArray[0].substring('CYPRESS_'.length).toLowerCase()
           // eslint-disable-next-line no-console
           console.log('From cypress.config', {propName, value: cypressEnvArray[1]})
-          config.env[propName] = cypressEnvArray[1]
+          config.env[propName.toUpperCase()] = cypressEnvArray[1]
         })
     },
   },
