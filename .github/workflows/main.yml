@@ -6,7 +6,7 @@ name: CI Test
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,8 +38,8 @@ jobs:
           --health-retries 5
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
-        node-version: [ 14.x ]
+        os: [ubuntu-latest]
+        node-version: [14.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

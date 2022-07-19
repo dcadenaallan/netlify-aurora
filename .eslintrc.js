@@ -9,7 +9,7 @@ module.exports = {
     requireConfigFile: false,
   },
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  plugins: ['@typescript-eslint/eslint-plugin', 'cypress'],
   // add your custom rules here
   rules: {},
   overrides: [
@@ -21,10 +21,11 @@ module.exports = {
       },
     },
     {
-      files: [
-        'src/**/*.ts',
-        'functions/**/*.ts',
-      ],
+      files: ['cypress/**/*.cy.ts'],
+      extends: ['plugin:cypress/recommended'],
+    },
+    {
+      files: ['src/**/*.ts', 'functions/**/*.ts'],
       parser: '@typescript-eslint/parser',
       extends: ['plugin:@typescript-eslint/recommended'],
       rules: {

@@ -2,14 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "types": [
-      "jest",
-      "node",
-      "multer"
-    ],
+    "types": ["jest", "node", "multer"]
   },
-  "include": [
-    "functions/**/*.spec.ts",
-    "functions/**/*.d.ts"
-  ]
+  "include": ["functions/**/*.spec.ts", "functions/**/*.d.ts"]
 }
