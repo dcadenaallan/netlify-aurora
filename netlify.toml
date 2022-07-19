@@ -13,12 +13,14 @@ functions = "functions"
 [[plugins]]
 package = "netlify-plugin-cypress"
   [plugins.inputs]
-  enable = false
+#  enable = false
+  configFile = "cypress.netlify.json"
   #  record = true
   #  browser = "electron"
     [plugins.inputs.preBuild]
     #    enable = false
     enable = true
+    spa = true
     start = 'npx prisma generate && npx netlify dev'
     wait-on = 'http://localhost:8888'
 
