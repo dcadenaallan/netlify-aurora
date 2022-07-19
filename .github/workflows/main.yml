@@ -81,6 +81,7 @@ jobs:
           DEBUG: "netlify-plugin-cypress,netlify-plugin-cypress:verbose"
         uses: cypress-io/github-action@v2
         with:
+          config-file: "cypress.netlify.json"
           tag: "Github Actions"
           record: true
           wait-on: 'http://localhost:8888'
