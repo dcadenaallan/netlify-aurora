@@ -12,7 +12,7 @@ functions = "functions"
 [[plugins]]
 package = "netlify-plugin-cypress"
   [plugins.inputs]
-  enable = false
+  configFile = "cypress.config.ts"
   #  record = true
   #  browser = "electron"
     [plugins.inputs.preBuild]
