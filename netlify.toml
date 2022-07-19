@@ -12,7 +12,7 @@ functions = "functions"
 [[plugins]]
 package = "netlify-plugin-cypress"
   [plugins.inputs]
-#  enable = false
+  enable = false
   #  record = true
   #  browser = "electron"
     [plugins.inputs.preBuild]
@@ -22,6 +22,8 @@ package = "netlify-plugin-cypress"
 #    configFile = "cypress.netlify.json"
     start = 'npx prisma generate && npx netlify dev'
     wait-on = 'http://localhost:8888'
+    [plugins.inputs.postBuild]
+    enable = false
 
 [functions]
   external_node_modules = ["express"]
