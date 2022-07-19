@@ -19,7 +19,7 @@ package = "netlify-plugin-cypress"
     #    enable = false
     enable = true
     spa = true
-    configFile = "cypress.netlify.json"
+#    configFile = "cypress.netlify.json"
     start = 'npx prisma generate && npx netlify dev'
     wait-on = 'http://localhost:8888'
 
