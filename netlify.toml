@@ -17,8 +17,8 @@ package = "netlify-plugin-cypress"
   #  browser = "electron"
     [plugins.inputs.preBuild]
     record = true
-    #    enable = false
-    enable = true
+    enable = false
+#    enable = true
     spa = true
 #    configFile = "cypress.netlify.json"
     start = 'DATABASE_URL=CYPRESS_DATABASE_URL npx prisma generate && printenv DATABASE_URL && npx netlify dev'

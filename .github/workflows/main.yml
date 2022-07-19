@@ -70,6 +70,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{matrix.node-version}}
+      - name: Install dependencies
+        run: npm install
+
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
@@ -82,4 +90,4 @@ jobs:
           spa: true
           record: true
           wait-on: 'http://localhost:8888'
-          start: npm install && npx prisma generate && npx netlify dev
+          start: npx prisma generate && npx netlify dev
