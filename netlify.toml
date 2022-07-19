@@ -13,6 +13,7 @@ functions = "functions"
 package = "netlify-plugin-cypress"
   [plugins.inputs]
   configFile = "cypress.config.ts"
+  record = true
   #  record = true
   #  browser = "electron"
     [plugins.inputs.preBuild]
