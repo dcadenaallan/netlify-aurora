@@ -1,14 +1,13 @@
 [build]
 functions = "functions"
-
-[build.environment]
-  CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
-  TERM = "xterm"
-
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+[build.environment]
+  CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
+  TERM = "xterm"
 
 [[plugins]]
 package = "netlify-plugin-cypress"
@@ -25,4 +24,4 @@ package = "netlify-plugin-cypress"
     wait-on = 'http://localhost:8888'
 
 [functions]
-external_node_modules = ["express"]
+  external_node_modules = ["express"]
