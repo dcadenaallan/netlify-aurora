@@ -2,16 +2,13 @@
 functions = "functions"
 
 [build.environment]
-# cache Cypress binary in local "node_modules" folder
-# so Netlify caches it
-CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
-# set TERM variable for terminal output
-TERM = "xterm"
+  CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
+  TERM = "xterm"
 
 [[redirects]]
-from = "/api/*"
-to = "/.netlify/functions/:splat"
-status = 200
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
 [[plugins]]
 package = "netlify-plugin-cypress"
@@ -19,7 +16,6 @@ package = "netlify-plugin-cypress"
   enable = false
   #  record = true
   #  browser = "electron"
-  # start Netlify server
     [plugins.inputs.preBuild]
     #    enable = false
     enable = true

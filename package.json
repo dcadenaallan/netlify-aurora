@@ -17,7 +17,8 @@
     "test": "jest",
     "net-dev": "npm run prisma-generate && netlify dev",
     "prisma-generate": "prisma generate",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:headless": "unset DISPLAY && yarn cypress run -b electron"
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma"
