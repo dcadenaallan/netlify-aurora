@@ -1,4 +1,5 @@
 import { defineConfig } from 'cypress'
+require('dotenv').config()
 
 export default defineConfig({
   defaultCommandTimeout: 15000,
@@ -11,7 +12,14 @@ export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:8888',
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      Object.entries(process.env)
+        .filter((envArray) => envArray[0].startsWith('CYPRESS_'))
+        .forEach((cypressEnvArray) => {
+          const propName = cypressEnvArray[0].substring('CYPRESS_'.length).toLowerCase()
+          // eslint-disable-next-line no-console
+          console.log('From cypress.config', {propName, value: cypressEnvArray[1]})
+          config.env[propName] = cypressEnvArray[1]
+        })
     },
   },
 })
