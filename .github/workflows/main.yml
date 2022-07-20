@@ -76,7 +76,7 @@ jobs:
       - name: Cypress run
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          DATABASE_URL: "postgresql://postgres:UhhOpIwbARXKRlmqb88t@netlifytest.cjcxflnltzn2.us-east-1.rds.amazonaws.com:5432/netlifytest?sslmode=verify-full&schema=public&connection_limit=5"
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DEPLOY_PRIME_URL: "http://localhost:8888"
           DEBUG: "netlify-plugin-cypress,netlify-plugin-cypress:verbose"
         uses: cypress-io/github-action@v4.1.0
