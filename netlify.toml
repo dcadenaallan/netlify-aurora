@@ -1,9 +1,38 @@
 [build]
 functions = "functions"
 [[redirects]]
-from = "/api/*"
-to = "/.netlify/functions/:splat"
-status = 200
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[build.environment]
+  CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
+  TERM = "xterm"
+
+[[plugins]]
+package = "netlify-plugin-inline-functions-env-typescript"
+  [plugins.inputs]
+  verbose = false
+  buildEvent = "onBuild"
+  inlineAll = true
+
+[[plugins]]
+package = "netlify-plugin-cypress"
+  [plugins.inputs]
+  enable = false
+  configFile = "cypress.config.ts"
+  #  record = true
+  #  browser = "electron"
+    [plugins.inputs.preBuild]
+    record = true
+    enable = false
+#    enable = true
+    spa = true
+#    configFile = "cypress.netlify.json"
+    start = 'npx prisma generate && npx netlify dev'
+    wait-on = 'http://localhost:8888'
+    [plugins.inputs.postBuild]
+    enable = false
 
 [functions]
-external_node_modules = ["express"]
+  external_node_modules = ["express"]

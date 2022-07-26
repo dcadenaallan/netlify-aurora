@@ -1,9 +1,14 @@
+require('dotenv').config()
+
+const BP_DEPLOY_URL =
+  process.env.CONTEXT === 'production' ? process.env.URL : process.env.DEPLOY_PRIME_URL
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -43,12 +48,13 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    proxy: false,
+    baseURL: `${BP_DEPLOY_URL}`,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

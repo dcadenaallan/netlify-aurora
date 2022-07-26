@@ -6,11 +6,7 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": [
-      "@types",
-      "@types/node",
-      "@types/jest"
-    ],
+    "types": ["@types", "@types/node", "@types/jest"],
     "sourceMap": true,
     "esModuleInterop": true
   },
