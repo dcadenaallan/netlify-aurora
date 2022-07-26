@@ -10,6 +10,13 @@ functions = "functions"
   TERM = "xterm"
 
 [[plugins]]
+package = "netlify-plugin-inline-functions-env-typescript"
+  [plugins.inputs]
+  verbose = false
+  buildEvent = "onBuild"
+  inlineAll = true
+
+[[plugins]]
 package = "netlify-plugin-cypress"
   [plugins.inputs]
   configFile = "cypress.config.ts"
