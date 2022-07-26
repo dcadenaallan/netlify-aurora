@@ -7,6 +7,7 @@ export default defineConfig({
   taskTimeout: 15000,
   viewportWidth: 1440,
   viewportHeight: 900,
+  video: false,
   env: {
     DEPLOY_PRIME_URL: 'http://localhost:8888',
   },

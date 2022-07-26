@@ -3,6 +3,10 @@ import { PrismaClient } from "@prisma/client";
 
 export class AppRoutes {
   static create(router: Router) {
+    router.get('/health', async (req: Request, res: Response) => {
+      res.json({ message: 'OK' })
+    })
+
     router.get("/", async (req: Request, res: Response) => {
       try {
         const prismaClient = new PrismaClient();
