@@ -19,6 +19,7 @@ package = "netlify-plugin-inline-functions-env-typescript"
 [[plugins]]
 package = "netlify-plugin-cypress"
   [plugins.inputs]
+  enable = false
   configFile = "cypress.config.ts"
   #  record = true
   #  browser = "electron"
