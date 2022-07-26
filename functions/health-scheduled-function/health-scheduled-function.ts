@@ -12,7 +12,7 @@ const handler = async function (event, context) {
   let statusCode = 200
   try {
     const res = await Promise.allSettled([axios.get(`${host}/normal-test/health`)])
-    console.log({res})
+    console.log({res: JSON.stringify(res)})
   } catch (e) {
     statusCode = 400
   }
